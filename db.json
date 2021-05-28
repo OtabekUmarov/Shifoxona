@@ -1,3 +1,48 @@
 {
-  "posts": []
+  "hodim": [
+    {
+      "ism": "Leslie Alexander",
+      "yili": "1974-02-02",
+      "hudud": "Samarqand",
+      "manzil": "Narpay",
+      "oila": "o`rtacha",
+      "malumoti": "Oliy",
+      "raqam": "998991234567",
+      "uyraqam": "998997654321",
+      "mutahassis": "Hamshira",
+      "faoliyat": "Hamshiralik",
+      "staj": "4",
+      "grafik": "Kunduzgi",
+      "hafta": "dushanba-juma",
+      "ishsanasi": "2021-05-12",
+      "ishboshsanasi": "2021-05-07",
+      "ishtugsanasi": "2021-05-11",
+      "lavozimi": "Yordamchi shifokor",
+      "ishmanzil": "Toshkent",
+      "id": 1
+    }
+  ],
+  "hodim1": [
+    {
+      "ism": "Leslie Alexander",
+      "yili": "1974-02-02",
+      "hudud": "Samarqand",
+      "manzil": "Narpay",
+      "oila": "o`rtacha",
+      "malumoti": "Oliy",
+      "raqam": "998991234567",
+      "uyraqam": "998997654321",
+      "mutahassis": "Hamshira",
+      "faoliyat": "Hamshiralik",
+      "staj": "4",
+      "grafik": "Kunduzgi",
+      "hafta": "dushanba-juma",
+      "ishsanasi": "2021-05-12",
+      "ishboshsanasi": "2021-05-07",
+      "ishtugsanasi": "2021-05-11",
+      "lavozimi": "Yordamchi shifokor",
+      "ishmanzil": "Toshkent",
+      "id": 1
+    }
+  ]
 }
