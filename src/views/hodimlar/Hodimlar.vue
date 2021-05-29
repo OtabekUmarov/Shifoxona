@@ -33,18 +33,18 @@
                     :items-per-page="10"
                     class="elevation-1"
                 >
-                    <!-- <template v-slot:item.btns="{ item }">
-                        <div class="text-right">
-                            <v-btn color="warning" @click="edit(item)">
-                            <v-icon>
-                                mdi-pencil
-                            </v-icon>
-                            </v-btn>
-                            <v-btn class="ml-3" color="error" @click="del(item.id)">
-                                <v-icon>mdi-cart-remove</v-icon>
-                            </v-btn>
+                    <template v-slot:item.shahsi="{ item }">
+                        <div :style="`background:url(../../assets/img/${item.ism}.png)`">
+                            <img :src="`../../assets/img/${item.ism}.png`" alt="">
+                            <p>{{item.ism}}</p>
                         </div>
-                    </template> -->
+                    </template>
+                    <template v-slot:item.btns="{ item }">
+                        <div class="text-right">
+                            <v-icon @click="edit(item)">mdi-pencil</v-icon>
+                            <v-icon color="error" class="ml-2">mdi-delete</v-icon>
+                        </div>
+                    </template>
                 </v-data-table>
             </v-col>
     </v-row>
@@ -54,7 +54,8 @@
     <v-dialog v-model="dialog" persistent max-width="650px">
       <v-card>
         <v-card-title>
-          <span class="headline font-weight-bold tc">Yangi shifokorni ro’yhatdan o’tkazish</span>
+           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
+          <span class="headline font-weight-bold tc" v-show="isShow">Shifokor ma'lumotlarini o'zgartirish</span>
         </v-card-title>
         <div class="dialogcount">1</div>
         <div class="subtitle-1 text-center">Shaxsiy ma’lumotlar</div>
@@ -65,7 +66,7 @@
                 <v-text-field class="br" v-model="hodim.ism" solo placeholder="Ism sharifi"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.yili" solo placeholder="Tug’ilgan sana" type="date">
+                <v-text-field class="br" v-model="hodim.yili" solo placeholder="Tug’ilgan sana" type="text" onfocus="(this.type='date')" >
                 </v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
@@ -102,7 +103,8 @@
     <v-dialog v-model="dialog1" persistent max-width="650px">
       <v-card>
         <v-card-title>
-          <span class="headline font-weight-bold tc">Yangi shifokorni ro’yhatdan o’tkazish</span>
+          <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
+          <span class="headline font-weight-bold tc" v-show="isShow">Shifokor ma'lumotlarini o'zgartirish</span>
         </v-card-title>
         <div class="dialogcount">2</div>
         <div class="subtitle-1 text-center">Mutaxassislik ma’lumotlar</div>
@@ -144,7 +146,8 @@
     <v-dialog v-model="dialog2" persistent max-width="650px">
       <v-card>
         <v-card-title>
-          <span class="headline font-weight-bold tc">Yangi shifokorni ro’yhatdan o’tkazish</span>
+          <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
+          <span class="headline font-weight-bold tc" v-show="isShow">Shifokor ma'lumotlarini o'zgartirish</span>
         </v-card-title>
         <div class="dialogcount">3</div>
         <div class="subtitle-1 text-center">Ish faoliyat tarixi</div>
@@ -164,7 +167,7 @@
                 <v-text-field class="br" v-model="hodim.ishmanzil" solo placeholder="Ishlagan shifoxona manzili"></v-text-field>
               </v-col>
               <v-col cols="12">
-                  <v-textarea class="br" solo name="input-7-4" label="Qo’shimcha ma’lumotlar"></v-textarea>
+                  <v-textarea class="br" solo name="input-7-4" label="Qo’shimcha ma’lumotlar" v-model="hodim.qoshimcha"></v-textarea>
             </v-col>
             </v-row>
             <div class="dialogcount" style="font-size: 20px">+</div>
@@ -174,8 +177,11 @@
           <button class="btn" text @click="dialog2 = false">
             Bekor qilish
           </button>
-          <button class="btn next" text @click="dialog2 = false, add()">
+          <button class="btn next" v-show="!isShow" text @click="dialog2 = false, add()">
             Yakunlash
+          </button> 
+          <button class="btn next" v-show="isShow" text @click="dialog2 = false, save()">
+            Saqlash
           </button> 
           </div>
       </v-card>
@@ -193,13 +199,15 @@
       dialog: false,
       dialog1: false,
       dialog2: false,
+      isShow: false,
       hodim: {},
       hodimlar:[],
       headers: [
-                { text: 'ism', value: 'ism' },
-                { text: 'yoshi', value: 'yosh' },
-                // { text: 'Mavjudligi', value: 'hide' },
-                // { text: '', value: 'btns' },
+                { text: 'Ism', value: 'shahsi' },
+                { text: 'Email', value: 'yosh' },
+                { text: 'Sana', value: 'ishsanasi' },
+                { text: 'Qabul vaqti', value: 'grafik' },
+                { text: '', value: 'btns' },
             ],
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent','Samarqand','Buxoro', 'Navoiy','Xorazm','Qashqadaryo','Surxondaryo'],
       oilaitem: ['yahshi', 'o`rtacha'],
@@ -211,11 +219,23 @@
     }),
     methods: {
       add(){
-        console.log(this.hodim);
         axios.post('http://localhost:3000/hodim', this.hodim).then(response => {
           this.hodimlar.push(response.data)
         })
+      },
+      edit(item){
+        this.hodim = item
+        this.dialog = true
+        this.isShow = true
+      },
+      save(){
+        this.isShow = false
       }
+    },
+    created() {
+      axios.get('http://localhost:3000/hodim').then(response => {
+        this.hodimlar = response.data
+      })
     },
     components: {
       Menu
