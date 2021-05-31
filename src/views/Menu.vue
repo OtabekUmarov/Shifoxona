@@ -13,10 +13,10 @@
         <v-list
           nav
           dense
-          class="pt-5 pl-5"
+          class="pt-5 pl-5 pb-5"
         >
         <span>MEDICINE</span>
-          <v-list-item class="links" link to="/">
+          <v-list-item class="links mt-4" link to="/">
             <v-list-item-icon>
               <v-icon>mdi-home-circle</v-icon>
             </v-list-item-icon>
