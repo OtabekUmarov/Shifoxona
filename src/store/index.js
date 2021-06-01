@@ -22,6 +22,13 @@ export default new Vuex.Store({
     },
     countHodim(state){
       return state.hodimlar.length
+    },
+    shifokorlar(state) {
+      let shifokor = []
+      for (let i = 0; i < state.hodimlar.length; i++) {
+        shifokor.push(state.hodimlar[i].ism)
+      }
+      return shifokor
     }
   },
   mutations: {
@@ -36,6 +43,12 @@ export default new Vuex.Store({
     },
     hodimAll(state,payload){
       state.hodimlar = payload
+    },
+    removeBemor(state,payload){
+      state.bemorlar.splice(state.bemorlar.findIndex(function(i){ return i.id === payload; }), 1);
+    },
+    removeHodim(state,payload){
+      state.hodimlar.splice(state.hodimlar.findIndex(function(i){ return i.id === payload; }), 1);
     }
   },
   actions: {
@@ -57,6 +70,18 @@ export default new Vuex.Store({
     hodimlarAll(context){
       axios.get('http://localhost:3000/hodim').then(response => {
         context.commit('hodimAll', response.data)
+      })
+    },
+    delBemor(context,id){
+      axios.delete('http://localhost:3000/bemor/'+id).then(response => {
+        console.log(response)
+        context.commit('removeBemor',id)
+      })
+    },
+    delHodim(context,id){
+      axios.delete('http://localhost:3000/hodim/'+id).then(response => {
+        console.log(response)
+        context.commit('removeHodim',id)
       })
     }
   }

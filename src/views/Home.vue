@@ -100,13 +100,10 @@
   import Menu from './Menu'
   import BemorTable from './bemorlar/BemorlarTable'
   import HodimTable from './hodimlar/HodimlarTable'
-  import axios from 'axios'
 
   export default {
     data: () => ({
       search: '',
-      hodimlar: [],
-      bemorlar: []
     }),
     components: {
       Menu,
@@ -128,16 +125,13 @@
         return this.hodimlar.filter(l => {
           return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
         })
+      },
+      bemorlar(){
+        return this.$store.getters.bemorlar
+      },
+      hodimlar(){
+        return this.$store.getters.hodimlar
       }
-    },
-    created() {
-      axios.get('http://localhost:3000/hodim').then(response => {
-        this.hodimlar = response.data
-      })
-      axios.get('http://localhost:3000/bemor').then(response => {
-        this.bemorlar = response.data
-      })
-      this.$store.dispatch.hodim
     }
   }
 </script>

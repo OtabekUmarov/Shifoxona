@@ -22,7 +22,7 @@
         </v-col>
       </v-row>
     </div>
-     <v-dialog v-model="dialog" persistent max-width="650px">
+     <v-dialog v-model="dialog" persistent max-width="700px">
       <v-card>
         <v-card-title>
           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
@@ -33,16 +33,16 @@
         <v-card-text>
           <v-container>
             <v-row>
+              <v-col cols="12">
+                <v-text-field class="br" v-model="hodim.email" solo placeholder="Email kiriting" type="email">
+                </v-text-field>
+              </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ism" solo placeholder="Ism sharifi"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.yili" solo placeholder="Tug’ilgan sana" type="text"
                   onfocus="(this.type='date')">
-                </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field class="br" v-model="hodim.email" solo placeholder="Email kiriting" type="email">
                 </v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
@@ -78,7 +78,7 @@
         </div>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="dialog1" persistent max-width="650px">
+    <v-dialog v-model="dialog1" persistent max-width="700px">
       <v-card>
         <v-card-title>
           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
@@ -116,7 +116,7 @@
                 ></v-select>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.ishsanasi" solo placeholder="Ishga kirgan sanasi" type="date">
+                <v-text-field class="br" v-model="hodim.ishsanasi" solo placeholder="Ishga kirgan sanasi" type="text" onfocus="(this.type='date')">
                 </v-text-field>
               </v-col>
             </v-row>
@@ -132,7 +132,7 @@
         </div>
       </v-card>
     </v-dialog>
-    <v-dialog v-model="dialog2" persistent max-width="650px">
+    <v-dialog v-model="dialog2" persistent max-width="700px">
       <v-card>
         <v-card-title>
           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
@@ -145,11 +145,11 @@
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ishboshsanasi" solo placeholder="Ish boshlagan sanasi"
-                  type="date"></v-text-field>
+                  type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ishtugsanasi" solo placeholder="Ishni tugatgan sanasi"
-                  type="date"></v-text-field>
+                  type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="lavozimi" label="Lavozimi" v-model="hodim.lavozimi" solo></v-select>
@@ -183,6 +183,7 @@
 </template>
 <script>
   import axios from 'axios'
+  import { eventEmitter } from '../../main'
   export default {
     props: ['hodimlarr'],
     data: () => ({
@@ -194,7 +195,6 @@
       hodim: {
         hafta:[]
       },
-      hodimlar: [],
       headers: [{
           text: 'Ism',
           value: 'shahsi'
@@ -225,11 +225,10 @@
         },
       ],
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent', 'Samarqand', 'Buxoro', 'Navoiy', 'Xorazm',
-        'Qashqadaryo', 'Surxondaryo'
-      ],
+        'Qashqadaryo', 'Surxondaryo'],
       oilaitem: ['Uylangan', 'Uylanmagan', 'Turmushga chiqqan', 'Turmushga chiqmagan'],
       malumotiitem: ['O`rta ma`lumotli', 'Oliy ma`lumotli'],
-      mutitem: ['Jarroh', 'Hamshira', 'Koz shifokori', 'Quloq shifokori'],
+      mutitem: ['Jarroh', 'Hamshira', 'Ko`z shifokori', 'Quloq shifokori'],
       faoliyat: ['Jarrohlik', 'Hamshiralik'],
       grafik: ['09:00-11:00', '08:00-13:00'],
       lavozimi: ['Bosh shifokor', 'Yordamchi shifokor', 'Hamshira'],
@@ -237,9 +236,7 @@
     }),
     methods: {
       add() {
-        axios.post('http://localhost:3000/hodim', this.hodim).then(response => {
-          this.hodimlar.push(response.data)
-        })
+        this.$store.dispatch('hodimlar', this.hodim)
         this.hodim = {
           hafta: []
         }
@@ -250,13 +247,7 @@
         this.isShow = true
       },
       del(id) {
-        axios.delete('http://localhost:3000/hodim/' + id).then(response => {
-          console.log(response)
-          this.hodimlar = this.hodimlar.filter(cat => {
-            return cat.id !== id
-          })
-
-        })
+        this.$store.dispatch('delHodim',id)
       },
       save() {
         this.isShow = false
@@ -277,17 +268,15 @@
         this.isShow = false
       }
     },
-    created() {
-      axios.get('http://localhost:3000/hodim').then(response => {
-        this.hodimlar = response.data
-      })
-    },
     computed: {
-      // filterHodim() {
-      //     return this.hodimlar.filter(l => {
-      //       return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-      //     })
-      //   }
+      hodimlar(){
+        return this.$store.getters.hodimlar
+      }
+    },
+    created() {
+      eventEmitter.$on('show1', ()=>{
+        this.dialog = true
+      })
     }
   }
 </script>

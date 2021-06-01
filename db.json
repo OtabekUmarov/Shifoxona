@@ -67,9 +67,17 @@
       "id": 3
     },
     {
-      "email": "aasas",
-      "ism": "1111111111111",
-      "id": 4
+      "hafta": [],
+      "email": "test",
+      "ism": "test",
+      "id": 5
+    },
+    {
+      "hafta": [
+        "seshanba",
+        "chorshanba"
+      ],
+      "id": 6
     }
   ],
   "bemor": [
@@ -108,34 +116,19 @@
       "diagnoz": "Nevrologik"
     },
     {
-      "ism": "111111111",
-      "yili": "1978-04-23",
-      "hudud": "Andijon",
-      "manzil": "sdfsdfsd",
-      "oila": "o`rtacha",
-      "email": "Example@gmail.com",
-      "malumoti": "Oliy",
-      "bandlik": "Vaqtincha ishsiz",
-      "ishjoyi": "sadasdsa",
-      "raqam": "34234234234234",
-      "uyraqam": "234234234227",
-      "qon": "1",
-      "faktor": "2",
-      "sugurtapolis": "asDwrq342342",
-      "sugurtafirma": "zCzxczxc",
-      "imtiyoz": "Order sohibi",
-      "imtiyozhujjat": "adasdasd",
-      "imtiyozsana": "1987-04-23",
-      "invalidlik": "II guruh",
-      "allergik": "bor",
-      "id": 2
-    },
-    {
-      "ism": "22222222222222",
+      "ism": "testbek",
       "id": 3
     },
     {
-      "ism": "999999999",
+      "ism": "Alijon",
+      "yili": "1967-02-20",
+      "email": "alijon@gmail.com",
+      "hudud": "Farg`ona",
+      "manzil": "margilon",
+      "oila": "o`rtacha",
+      "malumoti": "O`rta",
+      "bandlik": "Vaqtincha ishsiz",
+      "ishjoyi": "asas",
       "id": 4
     }
   ]

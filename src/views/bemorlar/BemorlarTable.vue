@@ -33,6 +33,9 @@
         <v-card-text>
           <v-container>
             <v-row>
+              <v-col cols="12">
+                <v-text-field class="br" v-model="bemor.email" solo placeholder="Email kiriting"></v-text-field>
+              </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="bemor.ism" solo placeholder="Ism sharifi"></v-text-field>
               </v-col>
@@ -40,9 +43,6 @@
                 <v-text-field class="br" v-model="bemor.yili" solo placeholder="Tug’ilgan sana" type="text"
                   onfocus="(this.type='date')">
                 </v-text-field>
-              </v-col>
-              <v-col cols="12">
-                <v-text-field class="br" v-model="bemor.email" solo placeholder="Email kiriting"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="hududitem" label="Hudud" v-model="bemor.hudud" solo></v-select>
@@ -117,7 +117,7 @@
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="bemor.imtiyozsana" solo placeholder="Imtiyoz olingan sana"
-                  type="date"></v-text-field>
+                  type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="invalidlik" label="Invalidlik" v-model="bemor.invalidlik" solo></v-select>
@@ -157,11 +157,11 @@
           <v-container>
             <v-row style="font-size:10px">
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.tashrifsana" solo placeholder="Tashrif sanasi" type="date">
+                <v-text-field class="br" v-model="bemor.tashrifsana" solo placeholder="Tashrif sanasi" type="text" onfocus="(this.type='date')">
                 </v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.chiqishsana" solo placeholder="Chiqish sanasi" type="date">
+                <v-text-field class="br" v-model="bemor.chiqishsana" solo placeholder="Chiqish sanasi" type="text" onfocus="(this.type='date')">
                 </v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
@@ -204,7 +204,7 @@
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="bemor.davolanishsana" solo placeholder="Davolanish  sanasi"
-                  type="date"></v-text-field>
+                  type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="kasallik" label="Kasallik turi" v-model="bemor.kasallik" solo></v-select>
@@ -225,7 +225,7 @@
           </v-container>
         </v-card-text>
         <div class="btns">
-          <button class="btn" text @click="dialog2 = false, close()">
+          <button class="btn" text @click="dialog3 = false, close()">
             Bekor qilish
           </button>
           <button class="btn next" v-show="!isShow" text @click="dialog3 = false, add()">
@@ -242,9 +242,7 @@
 
 <script>
   import axios from 'axios'
-import { eventEmitter } from '../../main'
-
-
+  import { eventEmitter } from '../../main'
   export default {
     props: ['bemorlarr'],
     data: () => ({
@@ -255,8 +253,6 @@ import { eventEmitter } from '../../main'
       dialog3: false,
       isShow: false,
       bemor: {},
-      bemorlar: [],
-      hodimlar: [],
       headers: [{
           text: 'Ism',
           value: 'shahsi'
@@ -289,8 +285,8 @@ import { eventEmitter } from '../../main'
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent', 'Samarqand', 'Buxoro', 'Navoiy', 'Xorazm',
         'Qashqadaryo', 'Surxondaryo'
       ],
-      oilaitem: ['yahshi', 'o`rtacha'],
-      malumotiitem: ['O`rta', 'Oliy'],
+      oilaitem: ['Yahshi', 'O`rtacha'],
+      malumotiitem: ['O`rta ma`lumotli', 'Oliy ma`lumotli'],
       bandlik: ['Ishlaydi', 'Vaqtincha ishsiz', 'Nafaqada'],
       qon: ['1', '2', '3', '4'],
       faktor: ['1', '2', '3', '4'],
@@ -309,14 +305,9 @@ import { eventEmitter } from '../../main'
         this.dialog = true
         this.isShow = true
       },
-      del(id) {
-        axios.delete('http://localhost:3000/bemor/' + id).then(response => {
-          console.log(response)
-          this.bemorlar = this.bemorlar.filter(cat => {
-            return cat.id !== id
-          })
-        })
-      },
+     del(id){
+            this.$store.dispatch('delBemor',id)
+        },
       save() {
         this.isShow = false
         axios.put('http://localhost:3000/bemor/' + this.bemor.id, this.bemor)
@@ -335,23 +326,19 @@ import { eventEmitter } from '../../main'
       }
     },
     computed: {
+      bemorlar(){
+        return this.$store.getters.bemorlar
+      },
+      hodimlar(){
+        return this.$store.getters.hodimlar
+      },
       shifokorlar() {
-        let shifokor = []
-        for (let i = 0; i < this.hodimlar.length; i++) {
-          shifokor.push(this.hodimlar[i].ism)
-        }
-        return shifokor
+        return this.$store.getters.shifokorlar
       }
     },
     created() {
       eventEmitter.$on('show', ()=>{
         this.dialog = true
-      })
-      // axios.get('http://localhost:3000/hodim').then(response => {
-      //   this.hodimlar = response.data
-      // })
-      axios.get('http://localhost:3000/bemor').then(response => {
-        this.bemorlar = response.data
       })
     }
   }
