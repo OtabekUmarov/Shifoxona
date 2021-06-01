@@ -114,11 +114,10 @@
     },
     computed: {
       hodimlarCount() {
-        console.log(this.$store.getters.countHodim);
         return this.$store.getters.countHodim
       },
       bemorlarCount() {
-        return this.bemorlar.length
+        return this.$store.getters.countBemor
       },
       filterBemor() {
         return this.bemorlar.filter(l => {
@@ -138,7 +137,7 @@
       axios.get('http://localhost:3000/bemor').then(response => {
         this.bemorlar = response.data
       })
-      // this.$store.dispatch.hodim
+      this.$store.dispatch.hodim
     }
   }
 </script>

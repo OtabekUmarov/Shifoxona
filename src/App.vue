@@ -11,10 +11,10 @@
 
 export default {
   name: 'App',
-
-  data: () => ({
-    //
-  }),
+  created(){
+     this.$store.dispatch('bemorlarAll'),
+     this.$store.dispatch('hodimlarAll')
+  }
 };
 </script>
 <style>

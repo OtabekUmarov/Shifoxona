@@ -301,9 +301,8 @@ import { eventEmitter } from '../../main'
     }),
     methods: {
       add() {
-        axios.post('http://localhost:3000/bemor', this.bemor).then(response => {
-          this.bemorlar.push(response.data)
-        })
+        this.$store.dispatch('bemorlar', this.bemor)
+        this.bemor = {}
       },
       edit(item) {
         this.bemor = item
@@ -348,9 +347,9 @@ import { eventEmitter } from '../../main'
       eventEmitter.$on('show', ()=>{
         this.dialog = true
       })
-      axios.get('http://localhost:3000/hodim').then(response => {
-        this.hodimlar = response.data
-      })
+      // axios.get('http://localhost:3000/hodim').then(response => {
+      //   this.hodimlar = response.data
+      // })
       axios.get('http://localhost:3000/bemor').then(response => {
         this.bemorlar = response.data
       })

@@ -267,11 +267,9 @@
     }),
     methods: {
       add() {
-        axios.post('http://localhost:3000/hodim', this.hodim).then(response => {
-          this.hodimlar.push(response.data)
-        })
+        this.$store.dispatch('hodimlar', this.hodim)
         this.hodim = {
-          hafta: []
+          hafta:[]
         }
       },
       edit(item) {
@@ -317,7 +315,10 @@
           return this.hodimlar.filter(l => {
             return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
           })
-        }
+        },
+        hodimlar(){
+        return this.$store.getters.hodimlar
+      }
     },
     components: {
       Menu

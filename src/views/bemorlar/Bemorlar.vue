@@ -277,7 +277,7 @@
       dialog3: false,
       isShow: false,
       bemor: {},
-      bemorlar: [],
+      
       hodimlar: [],
       headers: [{
           text: 'Ism',
@@ -323,9 +323,8 @@
     }),
     methods: {
       add() {
-        axios.post('http://localhost:3000/bemor', this.bemor).then(response => {
-          this.bemorlar.push(response.data)
-        })
+        this.$store.dispatch('bemorlar', this.bemor)
+        this.bemor = {}
       },
       edit(item) {
         this.bemor = item
@@ -373,14 +372,14 @@
           return this.bemorlar.filter(l => {
             return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
           })
-        }
+        },
+      bemorlar(){
+        return this.$store.getters.bemorlar
+      }
     },
     created() {
       axios.get('http://localhost:3000/hodim').then(response => {
         this.hodimlar = response.data
-      })
-      axios.get('http://localhost:3000/bemor').then(response => {
-        this.bemorlar = response.data
       })
     }
   }
