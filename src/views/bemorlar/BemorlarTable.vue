@@ -2,7 +2,7 @@
   <div>
     <div class="container">
       <div class="title">Bemorlar</div>
-      <v-row class="mt-4">
+      <v-row>
         <v-col cols="12">
           <v-data-table :headers="headers" :items="bemorlarr" :items-per-page="10" class="elevation-1">
             <template v-slot:item.shahsi="{ item }">

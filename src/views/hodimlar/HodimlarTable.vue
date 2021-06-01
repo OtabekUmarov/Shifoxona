@@ -1,55 +1,28 @@
 <template>
   <div>
-    <v-app>
-
-      <v-navigation-drawer app>
-        <Menu />
-      </v-navigation-drawer>
-
-      <v-content style="padding: 10px; background: #F6F8FB;">
-        <div class="container">
-          <div class="head">
-            <div class="search">
-              <v-icon class="pr-2">mdi-magnify</v-icon>
-              <input type="text" placeholder="Search" v-model="search">
-            </div>
-            <div class="right">
-              <span class="mr-5 alarm"><img src="../../assets/img/alarm.png" alt=""><span class="count">5</span></span>
-              <img src="../../assets/img/avatar.png" alt="">
-            </div>
-          </div>
-          <div class="title">Shifokorlar</div>
-          <div class="add">
-            <button>
-              <v-icon style="color: #fff" @click="dialog = !dialog">mdi-account-plus-outline</v-icon>
-            </button>
-          </div>
-          <v-row>
-            <v-col cols="12">
-              <v-data-table :headers="headers" :items="filterHodim" :items-per-page="10" class="elevation-1">
-                <template v-slot:item.shahsi="{ item }">
-                  <div :style="`background:url(../../assets/img/${item.ism}.png)`">
-                    <img :src="`../../assets/img/${item.ism}.png`" alt="">
-                    <p>{{item.ism}}</p>
-                  </div>
-                </template>
-                <template v-slot:item.btns="{ item }">
-                  <div class="text-right">
-                    <!-- <router-link :to="'/hodimlar/'+item.id"> -->
-                      <v-icon color="success" @click="show(item)">mdi-eye</v-icon>
-                    <!-- </router-link> -->
-                    <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
-                    <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
-                  </div>
-                </template>
-              </v-data-table>
-            </v-col>
-          </v-row>
-        </div>
-      </v-content>
-
-    </v-app>
-    <v-dialog v-model="dialog" persistent max-width="650px">
+    <div class="container">
+      <div class="title">Shifokorlar</div>
+      <v-row>
+        <v-col cols="12">
+          <v-data-table :headers="headers" :items="hodimlar" :items-per-page="10" class="elevation-1">
+            <template v-slot:item.shahsi="{ item }">
+              <div :style="`background:url(../../assets/img/${item.ism}.png)`">
+                <img :src="`../../assets/img/${item.ism}.png`" alt="">
+                <p>{{item.ism}}</p>
+              </div>
+            </template>
+            <template v-slot:item.btns="{ item }">
+              <div class="text-right">
+                <v-icon @click="show(item)" color="success">mdi-eye</v-icon>
+                <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
+                <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
+              </div>
+            </template>
+          </v-data-table>
+        </v-col>
+      </v-row>
+    </div>
+     <v-dialog v-model="dialog" persistent max-width="650px">
       <v-card>
         <v-card-title>
           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
@@ -60,16 +33,16 @@
         <v-card-text>
           <v-container>
             <v-row>
-              <v-col cols="12">
-                <v-text-field class="br" v-model="hodim.email" solo placeholder="Email kiriting" type="email">
-                </v-text-field>
-              </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ism" solo placeholder="Ism sharifi"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.yili" solo placeholder="Tug’ilgan sana" type="text"
                   onfocus="(this.type='date')">
+                </v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field class="br" v-model="hodim.email" solo placeholder="Email kiriting" type="email">
                 </v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
@@ -143,7 +116,7 @@
                 ></v-select>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.ishsanasi" solo placeholder="Ishga kirgan sanasi" type="text" onfocus="(this.type='date')">
+                <v-text-field class="br" v-model="hodim.ishsanasi" solo placeholder="Ishga kirgan sanasi" type="date">
                 </v-text-field>
               </v-col>
             </v-row>
@@ -172,11 +145,11 @@
             <v-row>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ishboshsanasi" solo placeholder="Ish boshlagan sanasi"
-                  type="text" onfocus="(this.type='date')"></v-text-field>
+                  type="date"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ishtugsanasi" solo placeholder="Ishni tugatgan sanasi"
-                  type="text" onfocus="(this.type='date')"></v-text-field>
+                  type="date"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="lavozimi" label="Lavozimi" v-model="hodim.lavozimi" solo></v-select>
@@ -206,15 +179,12 @@
         </div>
       </v-card>
     </v-dialog>
-
   </div>
 </template>
-
-
 <script>
-  import Menu from '../Menu'
   import axios from 'axios'
   export default {
+    props: ['hodimlarr'],
     data: () => ({
       search:'',
       dialog: false,
@@ -313,14 +283,11 @@
       })
     },
     computed: {
-      filterHodim() {
-          return this.hodimlar.filter(l => {
-            return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-          })
-        }
-    },
-    components: {
-      Menu
+      // filterHodim() {
+      //     return this.hodimlar.filter(l => {
+      //       return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+      //     })
+      //   }
     }
   }
 </script>

@@ -70,13 +70,6 @@
       "email": "aasas",
       "ism": "1111111111111",
       "id": 4
-    },
-    {
-      "hafta": [
-        "seshanba",
-        "chorshanba"
-      ],
-      "id": 6
     }
   ],
   "bemor": [
@@ -136,14 +129,6 @@
       "invalidlik": "II guruh",
       "allergik": "bor",
       "id": 2
-    },
-    {
-      "ism": "sasasasas",
-      "id": 3
-    },
-    {
-      "ism": "111",
-      "id": 4
     }
   ]
 }
