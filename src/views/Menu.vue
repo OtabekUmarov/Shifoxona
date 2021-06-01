@@ -6,9 +6,7 @@
               <v-img src="../assets/img/logo.png"></v-img>
             </router-link>
           </v-list-item>
-
         </v-list>
-
 
         <v-list
           nav

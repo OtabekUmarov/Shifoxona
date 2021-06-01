@@ -18,15 +18,5 @@ export default {
 };
 </script>
 <style>
-@font-face {
-  font-family: 'l-b';
-  src: url('./assets/fonts/Lato-Bold.ttf');
-}
-@font-face {
-  font-family: 'l-r';
-  src: url('./assets/fonts/Lato-Regular.ttf');
-}
-body {
-  font-family: 'l-b',serif;
-}
+
 </style>

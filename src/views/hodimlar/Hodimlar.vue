@@ -11,7 +11,7 @@
           <div class="head">
             <div class="search">
               <v-icon class="pr-2">mdi-magnify</v-icon>
-              <input type="text" placeholder="Search">
+              <input type="text" placeholder="Search" v-model="search">
             </div>
             <div class="right">
               <span class="mr-5 alarm"><img src="../../assets/img/alarm.png" alt=""><span class="count">5</span></span>
@@ -24,25 +24,27 @@
               <v-icon style="color: #fff" @click="dialog = !dialog">mdi-account-plus-outline</v-icon>
             </button>
           </div>
-        <v-row class="mt-4">
-          <v-col cols="12">
-            <v-data-table :headers="headers" :items="hodimlar" :items-per-page="10" class="elevation-1">
-              <template v-slot:item.shahsi="{ item }">
-                <div :style="`background:url(../../assets/img/${item.ism}.png)`">
-                  <img :src="`../../assets/img/${item.ism}.png`" alt="">
-                  <p>{{item.ism}}</p>
-                </div>
-              </template>
-              <template v-slot:item.btns="{ item }">
-                <div class="text-right">
-                  <v-icon color="success" @click="show(item)">mdi-eye</v-icon>
-                  <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
-                  <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
-                </div>
-              </template>
-            </v-data-table>
-          </v-col>
-        </v-row>
+          <v-row class="mt-4">
+            <v-col cols="12">
+              <v-data-table :headers="headers" :items="hodimlar" :items-per-page="10" class="elevation-1">
+                <template v-slot:item.shahsi="{ item }">
+                  <div :style="`background:url(../../assets/img/${item.ism}.png)`">
+                    <img :src="`../../assets/img/${item.ism}.png`" alt="">
+                    <p>{{item.ism}}</p>
+                  </div>
+                </template>
+                <template v-slot:item.btns="{ item }">
+                  <div class="text-right">
+                    <!-- <router-link :to="'/hodimlar/'+item.id"> -->
+                      <v-icon color="success" @click="show(item)">mdi-eye</v-icon>
+                    <!-- </router-link> -->
+                    <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
+                    <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
+                  </div>
+                </template>
+              </v-data-table>
+            </v-col>
+          </v-row>
         </div>
       </v-content>
 
@@ -127,9 +129,18 @@
               <v-col class="d-flex br" cols="12" sm="6">
                 <v-select class="br" :items="grafik" label="Ish grafigi" v-model="hodim.grafik" solo></v-select>
               </v-col>
+             
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.hafta" solo placeholder="Hafta kundagi grafigi">
-                </v-text-field>
+                <v-select
+                  v-model="hodim.hafta"
+                  solo
+                  :items="haftakuni"
+                  label="Hafta kundagi grafigi"
+                  multiple
+                  chips
+                  class="br"
+                  persistent-hint
+                ></v-select>
               </v-col>
               <v-col cols="12" sm="6">
                 <v-text-field class="br" v-model="hodim.ishsanasi" solo placeholder="Ishga kirgan sanasi" type="date">
@@ -205,11 +216,14 @@
   import axios from 'axios'
   export default {
     data: () => ({
+      search:'',
       dialog: false,
       dialog1: false,
       dialog2: false,
       isShow: false,
-      hodim: {},
+      hodim: {
+        hafta:[]
+      },
       hodimlar: [],
       headers: [{
           text: 'Ism',
@@ -220,16 +234,20 @@
           value: 'email'
         },
         {
-          text: 'Sana',
-          value: 'ishsanasi'
-        },
-        {
           text: 'Qabul vaqti',
           value: 'grafik'
         },
+          {
+            text: 'Mutaxassisligi',
+            value: 'mutahassis'
+          },
         {
-          text: 'Ishlayotgan bo’lim',
-          value: 'mutahassis'
+          text: 'Bo’lim',
+          value: 'faoliyat'
+        },
+        {
+          text: 'Qabul kunlari',
+          value: 'hafta'
         },
         {
           text: '',
@@ -244,14 +262,17 @@
       mutitem: ['Jarroh', 'Hamshira', 'Koz shifokori', 'Quloq shifokori'],
       faoliyat: ['Jarrohlik', 'Hamshiralik'],
       grafik: ['09:00-11:00', '08:00-13:00'],
-      lavozimi: ['Bosh shifokor', 'Yordamchi shifokor', 'Hamshira']
+      lavozimi: ['Bosh shifokor', 'Yordamchi shifokor', 'Hamshira'],
+      haftakuni: ['Dushanba', 'seshanba', 'chorshanba', 'payshanba','juma','shanba','yakshanba'],
     }),
     methods: {
       add() {
         axios.post('http://localhost:3000/hodim', this.hodim).then(response => {
           this.hodimlar.push(response.data)
         })
-        this.hodim = {}
+        this.hodim = {
+          hafta: []
+        }
       },
       edit(item) {
         this.hodim = item
@@ -267,7 +288,7 @@
 
         })
       },
-       save() {
+      save() {
         this.isShow = false
         axios.put('http://localhost:3000/hodim/' + this.hodim.id, this.hodim)
           .then(response => {
@@ -280,7 +301,9 @@
         this.bemor = {}
       },
       close() {
-        this.hodim = {}
+        this.hodim = {
+          hafta: []
+        }
         this.isShow = false
       }
     },
@@ -288,6 +311,13 @@
       axios.get('http://localhost:3000/hodim').then(response => {
         this.hodimlar = response.data
       })
+    },
+    computed: {
+      // filterHodim() {
+      //     return this.hodimlar.filter(l => {
+      //       return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
+      //     })
+      //   }
     },
     components: {
       Menu

@@ -4,6 +4,8 @@ import router from './router'
 import axios from 'axios'
 import vuetify from './plugins/vuetify'
 
+export const eventEmitter = new Vue()
+
 Vue.config.productionTip = false
 Vue.use(axios)
 

@@ -19,7 +19,12 @@ const routes = [
     path: '/hodimlar',
     name: 'Hodimlar',
     component: () => import('../views/hodimlar/Hodimlar.vue')
-  }
+  },
+  // {
+  //   path: '/hodimlar/:id',
+  //   name: 'viewhodim',
+  //   component: () => import('../views/hodimlar/ViewHodim.vue')
+  // }
 ]
 
 const router = new VueRouter({

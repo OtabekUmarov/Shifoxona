@@ -1,3 +1,14 @@
+@font-face {
+  font-family: 'l-b';
+  src: url('../fonts/Lato-Bold.ttf');
+}
+@font-face {
+  font-family: 'l-r';
+  src: url('../fonts/Lato-Regular.ttf');
+}
+body {
+  font-family: 'l-b',serif;
+}
 .container {
   padding: 10px 30px;
 }
