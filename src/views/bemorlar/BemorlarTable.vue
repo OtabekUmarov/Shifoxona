@@ -4,11 +4,17 @@
       <div class="title">Bemorlar</div>
       <v-row>
         <v-col cols="12">
-          <v-data-table :headers="headers" :items="bemorlarr" :items-per-page="10" class="elevation-1">
+          <v-data-table :headers="headers" :items="bemorlar" :items-per-page="5" class="elevation-1">
             <template v-slot:item.shahsi="{ item }">
               <div :style="`background:url(../../assets/img/${item.ism}.png)`">
+              <!-- <v-avatar>
+                <img
+                  :src="`../../assets/img/${item.ism}.png`"
+                  alt="John"
+                >
+              </v-avatar> -->
                 <img :src="`../../assets/img/${item.ism}.png`" alt="">
-                <p>{{item.ism}}</p>
+                {{item.ism}}
               </div>
             </template>
             <template v-slot:item.btns="{ item }">
@@ -126,12 +132,6 @@
                 <v-text-field class="br" v-model="bemor.allergik" solo placeholder="Allergik reaksiyalar">
                 </v-text-field>
               </v-col>
-              <!-- <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.vazni" solo placeholder="Vazni"></v-text-field>
-              </v-col>
-              <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.boyi" solo placeholder="Bo’yi"></v-text-field>
-              </v-col> -->
             </v-row>
           </v-container>
         </v-card-text>
@@ -305,7 +305,7 @@
         this.dialog = true
         this.isShow = true
       },
-     del(id){
+    del(id){
             this.$store.dispatch('delBemor',id)
         },
       save() {
@@ -345,5 +345,4 @@
 </script>
 
 <style>
-  @import url(../../assets/css/style.css);
 </style>

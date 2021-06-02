@@ -8,14 +8,25 @@ export default new Vuex.Store({
   state: {
     hodimlar: [],
     bemorlar: [],
-    hodimSoni: 10
+    hodimSoni: 10,
+    search:''
   },
   getters: {
+    getSearch(state){
+      return s => {
+        state.search = s
+      }
+    },
     bemorlar(state){
+      // return state.bemorlar.filter(l => {
+      //   return l.ism.toLowerCase().indexOf(state.search.toLowerCase()) !== -1
+      // })
       return state.bemorlar
     },
     hodimlar(state){
-      return state.hodimlar
+      return state.hodimlar.filter(l => {
+        return l.ism.toLowerCase().indexOf(state.search.toLowerCase()) !== -1
+      })
     },
     countBemor(state){
       return state.bemorlar.length
@@ -49,9 +60,16 @@ export default new Vuex.Store({
     },
     removeHodim(state,payload){
       state.hodimlar.splice(state.hodimlar.findIndex(function(i){ return i.id === payload; }), 1);
-    }
+    },
+    // searchInp(state, payload){
+    //   state.search = payload
+    // }
   },
   actions: {
+    // getSearch(context,s){
+    //   console.log(s);
+    //   context.commit('searchInp',s)
+    // },
     bemorlar(context,yangiBemor){
       axios.post('http://localhost:3000/bemor', yangiBemor).then(response => {
         context.commit('bemor', response.data)

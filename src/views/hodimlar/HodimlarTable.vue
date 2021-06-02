@@ -4,11 +4,17 @@
       <div class="title">Shifokorlar</div>
       <v-row>
         <v-col cols="12">
-          <v-data-table :headers="headers" :items="hodimlarr" :items-per-page="10" class="elevation-1">
+          <v-data-table :headers="headers" :items="hodimlarr" :items-per-page="5" class="elevation-1">
             <template v-slot:item.shahsi="{ item }">
               <div :style="`background:url(../../assets/img/${item.ism}.png)`">
-                <img :src="`../../assets/img/${item.ism}.png`" alt="">
-                <p>{{item.ism}}</p>
+              <!-- <v-avatar>
+                <img
+                  :src="`../../assets/img/${item.ism}.png`"
+                  alt="John"
+                >
+              </v-avatar> -->
+                <!-- <img src="../../assets/img/Leslie.png" alt=""> -->
+                {{item.ism}}
               </div>
             </template>
             <template v-slot:item.btns="{ item }">
@@ -22,7 +28,7 @@
         </v-col>
       </v-row>
     </div>
-     <v-dialog v-model="dialog" persistent max-width="700px">
+    <v-dialog v-model="dialog" persistent max-width="700px">
       <v-card>
         <v-card-title>
           <span class="headline font-weight-bold tc" v-show="!isShow">Yangi shifokorni ro’yhatdan o’tkazish</span>
@@ -282,5 +288,4 @@
 </script>
 
 <style>
-  @import url(../../assets/css/style.css);
 </style>

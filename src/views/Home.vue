@@ -1,22 +1,8 @@
 <template>
   <div>
     <v-app>
-      <v-navigation-drawer app>
-        <Menu />
-      </v-navigation-drawer>
-
       <v-content style="padding: 10px; background: #F6F8FB;">
         <v-container>
-          <div class="head">
-            <div class="search">
-              <v-icon class="pr-2">mdi-magnify</v-icon>
-              <input type="text" placeholder="Search" v-model="search">
-            </div>
-            <div class="right">
-              <span class="mr-5 alarm"><img src="../assets/img/alarm.png" alt=""><span class="count">5</span></span>
-              <img src="../assets/img/avatar.png" alt="">
-            </div>
-          </div>
           <div class="counter mt-5">
             <v-row>
               <v-col cols="12" sm="3">
@@ -85,8 +71,8 @@
             </v-row>
           </div>
         </v-container>
-        <BemorTable :bemorlarr='filterBemor' />
-        <HodimTable :hodimlarr='filterHodim' />
+        <BemorTable :bemorlarr='bemorlar' />
+        <HodimTable :hodimlarr='hodimlar' />
       </v-content>
     </v-app>
 
@@ -97,7 +83,6 @@
 
 
 <script>
-  import Menu from './Menu'
   import BemorTable from './bemorlar/BemorlarTable'
   import HodimTable from './hodimlar/HodimlarTable'
 
@@ -106,7 +91,6 @@
       search: '',
     }),
     components: {
-      Menu,
       BemorTable, HodimTable
     },
     computed: {
@@ -115,16 +99,6 @@
       },
       bemorlarCount() {
         return this.$store.getters.countBemor
-      },
-      filterBemor() {
-        return this.bemorlar.filter(l => {
-          return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-        })
-      },
-      filterHodim() {
-        return this.hodimlar.filter(l => {
-          return l.ism.toLowerCase().indexOf(this.search.toLowerCase()) !== -1
-        })
       },
       bemorlar(){
         return this.$store.getters.bemorlar
@@ -137,7 +111,6 @@
 </script>
 
 <style>
-  @import url(../assets/css/style.css);
 
   .counter .box {
     background-color: #fff;
@@ -177,10 +150,5 @@
     line-height: 24px;
     color: #336CFB;
     margin-top: 5px;
-  }
-</style>
-<style scoped>
-  .add {
-    display: none;
   }
 </style>

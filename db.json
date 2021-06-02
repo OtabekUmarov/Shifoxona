@@ -1,7 +1,7 @@
 {
   "hodim": [
     {
-      "ism": "Leslie Alexander",
+      "ism": "Leslie",
       "yili": "1974-02-02",
       "hudud": "Samarqand",
       "manzil": "Narpay",
@@ -71,50 +71,9 @@
       "email": "test",
       "ism": "test",
       "id": 5
-    },
-    {
-      "hafta": [
-        "seshanba",
-        "chorshanba"
-      ],
-      "id": 6
     }
   ],
   "bemor": [
-    {
-      "ism": "Bemorbek",
-      "yili": "1978-04-23",
-      "hudud": "Andijon",
-      "manzil": "Marg'ilon",
-      "oila": "o`rtacha",
-      "malumoti": "O`rta",
-      "email": "Example@gmail.com",
-      "bandlik": "Vaqtincha ishsiz",
-      "ishjoyi": "andijon",
-      "raqam": "34234234234234",
-      "uyraqam": "234234234227",
-      "qon": "1",
-      "faktor": "2",
-      "sugurtapolis": "asDwrq342342",
-      "sugurtafirma": "zCzxczxc",
-      "imtiyoz": "Order sohibi",
-      "imtiyozhujjat": "adasdasd",
-      "imtiyozsana": "1987-04-23",
-      "invalidlik": "II guruh",
-      "allergik": "bor",
-      "id": 1,
-      "tashrifsana": "2021-05-13",
-      "chiqishsana": "2021-06-10",
-      "davolangan": "Nevrologiya",
-      "masulshifokor": "Leslie Alexander",
-      "vazni": "67",
-      "boyi": "170",
-      "davolanishsana": "2021-04-14",
-      "kasallik": "Nevrologik",
-      "oldinshifokor": "Aleks",
-      "shifoxonamanzil": "Andijon",
-      "diagnoz": "Nevrologik"
-    },
     {
       "ism": "testbek",
       "id": 3
@@ -130,6 +89,16 @@
       "bandlik": "Vaqtincha ishsiz",
       "ishjoyi": "asas",
       "id": 4
+    },
+    {
+      "email": "11111111111111",
+      "ism": "22222222",
+      "id": 5
+    },
+    {
+      "email": "asasas",
+      "ism": "asasasa",
+      "id": 6
     }
   ]
 }

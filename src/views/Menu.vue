@@ -1,5 +1,5 @@
 <template>
-   <v-navigation-drawer  style="height: 100vh; position: fixed">
+   <v-navigation-drawer app>
         <v-list class="pt-5 pl-5">
           <v-list-item class="px-2">
             <router-link to="/">
@@ -7,7 +7,6 @@
             </router-link>
           </v-list-item>
         </v-list>
-
         <v-list
           nav
           dense
@@ -46,18 +45,18 @@
           </v-list-item>
         </v-list>
         <v-divider></v-divider>
-          <v-list
-          nav
-          dense
-          class="pt-5 pl-5"
-        >
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-help-circle</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Yordam</v-list-item-title>
-          </v-list-item>
-          </v-list>
+        <v-list
+        nav
+        dense
+        class="pt-5 pl-5"
+      >
+        <v-list-item link>
+          <v-list-item-icon>
+            <v-icon>mdi-help-circle</v-icon>
+          </v-list-item-icon>
+          <v-list-item-title>Yordam</v-list-item-title>
+        </v-list-item>
+        </v-list>
       </v-navigation-drawer>
 </template>
 
