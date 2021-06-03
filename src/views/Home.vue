@@ -64,7 +64,7 @@
                   </div>
                   <div class="right">
                     <div class="titles">Byudjet</div>
-                    <div class="countt">213</div>
+                    <div class="countt">213,000$</div>
                   </div>
                 </div>
               </v-col>

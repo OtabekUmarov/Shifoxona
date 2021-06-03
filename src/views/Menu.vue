@@ -19,29 +19,29 @@
             </v-list-item-icon>
             <v-list-item-title >Bosh sahifa</v-list-item-title>
           </v-list-item>
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-alarm-bell</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Palatalar</v-list-item-title>
-          </v-list-item>
           <v-list-item link to="/hodimlar">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Shifokorlar</v-list-item-title>
           </v-list-item>
-          <v-list-item link>
-            <v-list-item-icon>
-              <v-icon>mdi-account-child</v-icon>
-            </v-list-item-icon>
-            <v-list-item-title>Bo’limlar</v-list-item-title>
-          </v-list-item>
           <v-list-item link to="/bemorlar">
             <v-list-item-icon>
               <v-icon>mdi-account</v-icon>
             </v-list-item-icon>
             <v-list-item-title>Bemorlar</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-alarm-bell</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Palatalar</v-list-item-title>
+          </v-list-item>
+          <v-list-item link>
+            <v-list-item-icon>
+              <v-icon>mdi-account-child</v-icon>
+            </v-list-item-icon>
+            <v-list-item-title>Bo’limlar</v-list-item-title>
           </v-list-item>
         </v-list>
         <v-divider></v-divider>

@@ -1,5 +1,5 @@
 <template>
-  <div class="container" style="border-radius:8px; overflow:hidden; background:#fff; padding: 0; margin-top:25px;">
+  <div class="container" style="border-radius:8px; overflow:hidden; background:#fff; padding: 0; margin:10px;margin-top:25px;">
     <div class="views">
       <div class="person">
         <div class="img">
@@ -101,7 +101,7 @@
         </v-row>
       </div>
       <div class="tibbiy">
-         <v-row>
+        <v-row>
             <v-col cols="12">
               <div class="ism">Tibbiy ma’lumotlar</div>
             </v-col>
@@ -139,7 +139,7 @@
             <div class="sarlavha">Vazni</div>
           </v-col>
           <v-col cols="2">
-            <div class="val">{{view.vazni}}</div>
+            <div class="val">{{view.vazni}} kg</div>
           </v-col>
           <v-col cols="2">
             <div class="sarlavha">Sug’urta polisi</div>
@@ -157,7 +157,7 @@
             <div class="sarlavha">Bo’yi</div>
           </v-col>
           <v-col cols="2">
-            <div class="val">{{view.boyi}}</div>
+            <div class="val">{{view.boyi}} sm</div>
           </v-col>
           <v-col cols="2">
             <div class="sarlavha">Sug’urta firmasi</div>
@@ -188,6 +188,9 @@
 </script>
 
 <style>
+  .row {
+    align-items: center;
+  }
   .person {
     display: flex;
     border-bottom: 1px solid #BDBDBD;

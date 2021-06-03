@@ -5,18 +5,6 @@
       <v-row>
         <v-col cols="12">
           <v-data-table :headers="headers" :items="bemorlar" :items-per-page="5" class="elevation-1">
-            <template v-slot:item.shahsi="{ item }">
-              <div :style="`background:url(../../assets/img/${item.ism}.png)`">
-              <!-- <v-avatar>
-                <img
-                  :src="`../../assets/img/${item.ism}.png`"
-                  alt="John"
-                >
-              </v-avatar> -->
-                <img :src="`../../assets/img/${item.ism}.png`" alt="">
-                {{item.ism}}
-              </div>
-            </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
                 <router-link :to="{name: 'ViewBemor',params: {id:item.id}}">
@@ -257,7 +245,7 @@
       bemor: {},
       headers: [{
           text: 'Ism',
-          value: 'shahsi'
+          value: 'ism'
         },
         {
           text: 'Email',
@@ -311,7 +299,9 @@
         this.isShow = true
       },
       del(id){
-            this.$store.dispatch('delBemor',id)
+        if(confirm('Rostan ham o`chirmoqchimisz')){
+          this.$store.dispatch('delBemor',id)
+        }
         },
       save() {
         this.isShow = false
