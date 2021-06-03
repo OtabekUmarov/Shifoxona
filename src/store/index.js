@@ -9,13 +9,35 @@ export default new Vuex.Store({
     hodimlar: [],
     bemorlar: [],
     hodimSoni: 10,
-    search:''
+    search:'',
+    bId: '',
+    hId: '',
   },
   getters: {
     getSearch(state){
       return s => {
         state.search = s
       }
+    },
+    showBemor(state){
+      return b => {
+        state.bId = b
+      }
+    },
+    showHodim(state){
+      return b => {
+        state.hId = b
+      }
+    },
+    viewBemor(state){
+      return state.bemorlar.find(b => {
+        if(b.id == state.bId) return b
+      })
+    },
+    viewHodim(state){
+      return state.hodimlar.find(b => {
+        if(b.id == state.hId) return b
+      })
     },
     bemorlar(state){
       // return state.bemorlar.filter(l => {

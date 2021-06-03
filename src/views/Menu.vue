@@ -1,5 +1,5 @@
 <template>
-   <v-navigation-drawer app>
+  <v-navigation-drawer app>
         <v-list class="pt-5 pl-5">
           <v-list-item class="px-2">
             <router-link to="/">

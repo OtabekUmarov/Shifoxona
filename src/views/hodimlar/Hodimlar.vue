@@ -19,6 +19,9 @@
   import { eventEmitter } from '../../main'
 
   export default {
+    data: ()=> ({
+      dialog: false
+    }),
     methods: {
       show1(){
         eventEmitter.$emit('show1')

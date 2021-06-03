@@ -13,18 +13,23 @@ const routes = [
   {
     path: '/bemorlar',
     name: 'Bemorlar',
-    component: () => import('../views/bemorlar/Bemorlar.vue')
+    component: () => import('../views/bemorlar/Bemorlar.vue'),
+  },
+  {
+    path: '/bemorlar/:id',
+    name: 'ViewBemor',
+    component: () => import('../views/bemorlar/ViewBemor.vue'),
   },
   {
     path: '/hodimlar',
     name: 'Hodimlar',
-    component: () => import('../views/hodimlar/Hodimlar.vue')
+    component: () => import('../views/hodimlar/Hodimlar.vue'), 
   },
-  // {
-  //   path: '/hodimlar/:id',
-  //   name: 'viewhodim',
-  //   component: () => import('../views/hodimlar/ViewHodim.vue')
-  // }
+  {
+    path: '/hodimlar/:id',
+    name: 'ViewHodim',
+    component: () => import('../views/hodimlar/ViewHodim.vue'), 
+  },
 ]
 
 const router = new VueRouter({

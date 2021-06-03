@@ -12,7 +12,9 @@ body {
 .container {
   padding: 10px 30px;
 }
-
+.v-application a {
+  text-decoration: none;
+}
 .head {
   display: flex;
   justify-content: space-between;

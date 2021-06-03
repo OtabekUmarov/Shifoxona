@@ -75,8 +75,38 @@
   ],
   "bemor": [
     {
-      "ism": "testbek",
-      "id": 3
+      "ism": "Kamolova Aziza",
+      "id": 1,
+      "email": "kamolova.aziza@gmail.com",
+      "yili": "1993-09-12",
+      "hudud": "Buxoro",
+      "manzil": "Buxoro viloyati, A.Temur  ko’chasi 13-uy",
+      "oila": "Turmushga chiqqan",
+      "malumoti": "Oliy ma`lumotli",
+      "bandlik": "Ishlaydi",
+      "ishjoyi": "OOO “Honey Honey”",
+      "raqam": "998991234567",
+      "uyraqam": "998991234567",
+      "qon": "I",
+      "faktor": "+",
+      "sugurtapolis": "№1231123-AB",
+      "sugurtafirma": "MCHJ “Human Save Limited ”",
+      "imtiyoz": "Order sohibi",
+      "imtiyozhujjat": "№ 123123-A Kategoriya A",
+      "imtiyozsana": "2020-01-12",
+      "invalidlik": "I guruh",
+      "allergik": "Ko’p savollarga",
+      "tashrifsana": "2021-03-26",
+      "chiqishsana": "2021-03-29",
+      "davolangan": "Nevrologiya",
+      "masulshifokor": "Leslie Alexander",
+      "vazni": "55",
+      "boyi": "179",
+      "davolanishsana": "2021-03-12",
+      "kasallik": "Nevrologik",
+      "oldinshifokor": "Tohirov B",
+      "shifoxonamanzil": "Buxoro shahr",
+      "diagnoz": "Kuchli nevrologik bosim tufayli (ayol kishi tomonidan)"
     },
     {
       "ism": "Alijon",
@@ -88,16 +118,21 @@
       "malumoti": "O`rta",
       "bandlik": "Vaqtincha ishsiz",
       "ishjoyi": "asas",
-      "id": 4
+      "id": 2
     },
     {
       "email": "11111111111111",
       "ism": "22222222",
-      "id": 5
+      "id": 3
     },
     {
       "email": "asasas",
       "ism": "asasasa",
+      "id": 4
+    },
+    {
+      "email": "as",
+      "ism": "asas",
       "id": 6
     }
   ]

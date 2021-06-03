@@ -19,7 +19,9 @@
             </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
-                <v-icon @click="show(item)" color="success">mdi-eye</v-icon>
+                <router-link :to="{name: 'ViewHodim',params: {id:item.id}}">
+                  <v-icon @click="show(item.id)" color="success">mdi-eye</v-icon>
+                </router-link>
                 <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
                 <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
               </div>
@@ -241,6 +243,9 @@
       haftakuni: ['Dushanba', 'seshanba', 'chorshanba', 'payshanba','juma','shanba','yakshanba'],
     }),
     methods: {
+      show(id){
+        this.$store.getters.showHodim(id)
+      },
       add() {
         this.$store.dispatch('hodimlar', this.hodim)
         this.hodim = {

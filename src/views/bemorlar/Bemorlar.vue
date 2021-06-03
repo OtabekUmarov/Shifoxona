@@ -19,13 +19,16 @@
   import { eventEmitter } from '../../main'
 
   export default {
+    data: ()=> ({
+      dialog: false
+    }),
     methods: {
       show(){
         eventEmitter.$emit('show')
       }
     },
     components: {
-       BemorlarTable
+      BemorlarTable
     },
     computed: {
       bemorlar(){

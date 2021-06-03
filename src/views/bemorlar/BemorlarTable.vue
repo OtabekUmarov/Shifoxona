@@ -19,7 +19,9 @@
             </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
-                <v-icon @click="show(item)" color="success">mdi-eye</v-icon>
+                <router-link :to="{name: 'ViewBemor',params: {id:item.id}}">
+                  <v-icon @click="show(item.id)" color="success">mdi-eye</v-icon>
+                </router-link>
                 <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
                 <v-icon @click="del(item.id)" color="error" class="ml-2">mdi-delete</v-icon>
               </div>
@@ -285,17 +287,20 @@
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent', 'Samarqand', 'Buxoro', 'Navoiy', 'Xorazm',
         'Qashqadaryo', 'Surxondaryo'
       ],
-      oilaitem: ['Yahshi', 'O`rtacha'],
+      oilaitem: ['Turmushga chiqqan', 'Turmushga chiqmagan', 'Uylangan', 'Uylanmagan'],
       malumotiitem: ['O`rta ma`lumotli', 'Oliy ma`lumotli'],
       bandlik: ['Ishlaydi', 'Vaqtincha ishsiz', 'Nafaqada'],
-      qon: ['1', '2', '3', '4'],
-      faktor: ['1', '2', '3', '4'],
+      qon: ['I', 'II', 'III', 'IV'],
+      faktor: ['+', '2', '3', '4'],
       imtiyoz: ['Order sohibi'],
       invalidlik: ['I guruh', 'II guruh'],
       davolangan: ['Nevrologiya'],
       kasallik: ['Nevrologik', 'Insult']
     }),
     methods: {
+      show(id){
+        this.$store.getters.showBemor(id)
+      },
       add() {
         this.$store.dispatch('bemorlar', this.bemor)
         this.bemor = {}
@@ -305,7 +310,7 @@
         this.dialog = true
         this.isShow = true
       },
-    del(id){
+      del(id){
             this.$store.dispatch('delBemor',id)
         },
       save() {
