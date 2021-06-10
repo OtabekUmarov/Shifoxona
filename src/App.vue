@@ -11,7 +11,7 @@
             </div>
             <div class="right">
               <span class="mr-5 alarm"><img src="./assets/img/alarm.png" alt=""><span class="count">5</span></span>
-              <img src="./assets/img/avatar.png" alt="">
+              <img src="./assets/img/avatar2.png" alt="">
             </div>
           </div>
       </div>

@@ -43,11 +43,13 @@ export default new Vuex.Store({
       return state.bemorlar.filter(l => {
         return l.ism.toLowerCase().indexOf(state.search.toLowerCase()) !== -1
       })
+      // return state.bemorlar
     },
     hodimlar(state){
       return state.hodimlar.filter(l => {
         return l.ism.toLowerCase().indexOf(state.search.toLowerCase()) !== -1
       })
+      // return state.hodimlar 
     },
     countBemor(state){
       return state.bemorlar.length

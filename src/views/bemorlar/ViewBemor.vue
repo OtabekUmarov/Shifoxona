@@ -3,7 +3,7 @@
     <div class="views">
       <div class="person">
         <div class="img">
-          <img src="../../assets/img/view1.jpg" alt="">
+          <img :src="require(`../../assets/img/${view.bigImg}.jpg`)" alt="">
         </div>
         <div class="box">
           <v-row>

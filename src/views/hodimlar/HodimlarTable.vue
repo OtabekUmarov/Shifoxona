@@ -5,6 +5,12 @@
       <v-row>
         <v-col cols="12">
           <v-data-table :headers="headers" :items="hodimlarr" :items-per-page="5" class="elevation-1">
+            <template v-slot:item.shahsi="{ item }">
+                <div style="display:flex; align-items:center">
+                  <img style="width:32px; height:32px" class="me-2" :src="require(`../../assets/img/${item.img}.png`)" alt="">
+                  <span>{{item.ism}}</span>
+                </div>
+            </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
                 <router-link :to="{name: 'ViewHodim',params: {id:item.id}}">
@@ -191,34 +197,14 @@
       hodim: {
         hafta:[]
       },
-      headers: [{
-          text: 'Ism',
-          value: 'ism'
-        },
-        {
-          text: 'Email',
-          value: 'email'
-        },
-        {
-          text: 'Qabul vaqti',
-          value: 'grafik'
-        },
-          {
-            text: 'Mutaxassisligi',
-            value: 'mutahassis'
-          },
-        {
-          text: 'Bo’lim',
-          value: 'faoliyat'
-        },
-        {
-          text: 'Qabul kunlari',
-          value: 'hafta'
-        },
-        {
-          text: '',
-          value: 'btns'
-        },
+      headers: [
+        {text: 'Ism',  value: 'shahsi'},
+        {text: 'Email',  value: 'email'},
+        {text: 'Qabul vaqti',  value: 'grafik'},
+        {text: 'Mutaxassisligi',  value: 'mutahassis'},
+        {text: 'Bo’lim',  value: 'faoliyat'},
+        // {text: 'Qabul kunlari',  value: 'hafta'},
+        {text: '',  value: 'btns'},
       ],
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent', 'Samarqand', 'Buxoro', 'Navoiy', 'Xorazm',
         'Qashqadaryo', 'Surxondaryo'],
