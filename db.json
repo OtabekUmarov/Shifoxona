@@ -29,7 +29,7 @@
       "qoshimcha": "Bosh shifokor"
     },
     {
-      "ism": "Ismoilov Asror",
+      "ism": "Ismoilov Abror",
       "yili": "1995-02-02",
       "hudud": "Farg`ona",
       "img": "avatar2",
@@ -113,6 +113,34 @@
       "ishmanzil": "Buxoro shahar bosh shifoxonasi",
       "qoshimcha": "Bosh Shifokor",
       "ishsanasi": "2019-02-25"
+    },
+    {
+      "hafta": [
+        "seshanba",
+        "chorshanba"
+      ],
+      "email": "alisher@gmail.com",
+      "ism": "Alisher Mahmudov",
+      "yili": "1988-05-20",
+      "img": "avatar2",
+      "bigImg": "view2",
+      "hudud": "Farg`ona",
+      "manzil": "Margilon",
+      "oila": "Uylanmagan",
+      "malumoti": "Oliy ma`lumotli",
+      "raqam": "99899999999",
+      "uyraqam": "9988999996",
+      "mutahassis": "Ko`z shifokori",
+      "faoliyat": "Jarrohlik",
+      "staj": "5",
+      "grafik": "08:00-13:00",
+      "ishsanasi": "2019-04-20",
+      "ishboshsanasi": "2016-08-15",
+      "ishtugsanasi": "2018-03-15",
+      "lavozimi": "Yordamchi shifokor",
+      "ishmanzil": "Toshkent",
+      "qoshimcha": "asasa",
+      "id": 6
     }
   ],
   "bemor": [
@@ -223,6 +251,41 @@
       "oldinshifokor": "Navroz",
       "shifoxonamanzil": "Toshent",
       "diagnoz": "Umurtqa sinishi"
+    },
+    {
+      "img": "avatar1",
+      "bigImg": "view1",
+      "email": "nasiba@gmail.com",
+      "ism": "Nasiba Ahrorova",
+      "yili": "1975-12-16",
+      "hudud": "Toshkent",
+      "manzil": "Yashnabod",
+      "oila": "Turmushga chiqqan",
+      "malumoti": "O`rta ma`lumotli",
+      "bandlik": "Vaqtincha ishsiz",
+      "ishjoyi": "yoq",
+      "raqam": "99899123467",
+      "uyraqam": "998991234567",
+      "qon": "II",
+      "faktor": "+",
+      "sugurtapolis": "AXdadad",
+      "sugurtafirma": "dsd",
+      "imtiyoz": "Order sohibi",
+      "imtiyozhujjat": "Order",
+      "imtiyozsana": "2021-05-15",
+      "invalidlik": "I guruh",
+      "allergik": "Yoq",
+      "tashrifsana": "2020-05-15",
+      "chiqishsana": "2020-05-25",
+      "davolangan": "Nevrologiya",
+      "masulshifokor": "Alisher Mahmudov",
+      "vazni": "65",
+      "boyi": "166",
+      "davolanishsana": "2019-03-23",
+      "kasallik": "Nevrologik",
+      "oldinshifokor": "Abdulla",
+      "shifoxonamanzil": "Toshkent",
+      "id": 4
     }
   ]
 }

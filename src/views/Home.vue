@@ -75,8 +75,6 @@
         <HodimTable :hodimlarr='hodimlar' />
       </v-content>
     </v-app>
-
-
   </div>
 </template>
 
@@ -111,7 +109,6 @@
 </script>
 
 <style>
-
   .counter .box {
     background-color: #fff;
     display: flex;

@@ -195,7 +195,9 @@
       dialog2: false,
       isShow: false,
       hodim: {
-        hafta:[]
+        hafta:[],
+        img: "avatar2",
+        bigImg: "view2"
       },
       headers: [
         {text: 'Ism',  value: 'shahsi'},
@@ -223,7 +225,9 @@
       add() {
         this.$store.dispatch('hodimlar', this.hodim)
         this.hodim = {
-          hafta: []
+          hafta: [],
+          img: "avatar2",
+          bigImg: "view2"
         }
       },
       edit(item) {
@@ -246,11 +250,16 @@
               }
             })
           })
-        this.bemor = {}
+        this.bemor = {
+          img: "avatar2",
+          bigImg: "view2"
+        }
       },
       close() {
         this.hodim = {
-          hafta: []
+          hafta: [],
+          img: "avatar2",
+          bigImg: "view2"
         }
         this.isShow = false
       }

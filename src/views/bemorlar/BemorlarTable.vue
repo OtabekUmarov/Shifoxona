@@ -248,7 +248,10 @@
       dialog2: false,
       dialog3: false,
       isShow: false,
-      bemor: {},
+      bemor: {
+        img: "avatar1",
+        bigImg: "view1"
+      },
       headers: [{text: 'Ism', value: 'shahsi'},
         {text: 'Email', value: 'email'},
         {text: 'Qabul sanasi', value: 'tashrifsana'},
@@ -276,7 +279,10 @@
       },
       add() {
         this.$store.dispatch('bemorlar', this.bemor)
-        this.bemor = {}
+        this.bemor = {
+           img: "avatar1",
+          bigImg: "view1"
+        }
       },
       edit(item) {
         this.bemor = item
@@ -298,11 +304,17 @@
               }
             })
           })
-        this.bemor = {}
+        this.bemor = {
+          img: "avatar1",
+          bigImg: "view1"
+        }
       },
       close() {
         this.isShow = false
-        this.bemor = {}
+        this.bemor = {
+          img: "avatar1",
+          bigImg: "view1"
+        }
       }
     },
     computed: {
