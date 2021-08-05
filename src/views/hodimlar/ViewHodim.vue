@@ -1,6 +1,6 @@
 <template>
   <div class="container" style="border-radius:8px; overflow:hidden; background:#fff; padding: 0; margin:10px;margin-top:25px;">
-    <div class="views">
+    <div class="view">
       <div class="person">
         <div class="img">
           <img :src="require(`../../assets/img/${view.bigImg}.jpg`)" alt="">
@@ -22,7 +22,7 @@
               <div class="sarlavha">Ishga kirgan sana</div>
             </v-col>
             <v-col cols="6">
-              <div class="val">{{view.ishboshsanasi}}</div>
+              <div class="val">{{view.ishboshsanasi[0]}}</div>
             </v-col>
             <v-col cols="2">
               <div class="sarlavha">Ishlayotgan bo’lim</div>
@@ -94,12 +94,42 @@
           </v-col>
         </v-row>
       </div>
+      <div class="infos">
+        <v-row>
+          <v-col cols="12">
+            <div class="title">Mehnat faoliyati</div>
+          </v-col>
+          <v-col cols="3" v-for="(h,index) of headers" :key="index">
+            <div class="val">{{h}}</div>
+          </v-col>
+          <v-col cols="12" v-for="(v, index) of view.ishmanzil" :key="index">
+            <v-row>
+              <v-col cols="3">
+                <div class="sarlavha">{{v}}</div>
+              </v-col>
+              <v-col cols="3">
+                <div class="sarlavha">{{view.ishtugsanasi[index].split('-')[0]-view.ishboshsanasi[index].split('-')[0]}} yil ({{view.ishboshsanasi[index].split('-')[0]}}-{{view.ishtugsanasi[index].split('-')[0]}})
+                </div>
+              </v-col>
+              <v-col cols="3">
+                <div class="sarlavha">{{view.lavozimi[index]}}</div>
+              </v-col>
+              <v-col cols="3">
+                <div class="sarlavha">{{view.qoshimcha[index]}}</div>
+              </v-col>
+            </v-row>
+          </v-col>
+        </v-row>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
+      data: () => ({
+      headers: ['Muassasa nomi', 'Ish faoliyat muddati', 'Lavozimi', 'Qo`shimcha'],
+    }),
   computed: {
     view(){
       return this.$store.getters.viewHodim
@@ -119,7 +149,7 @@ export default {
   .shahsiy {
     border-bottom: 1px solid #BDBDBD;
   }
-  .box, .shahsiy {
+  .box, .shahsiy, .infos {
     padding: 20px;
   }
   .box {

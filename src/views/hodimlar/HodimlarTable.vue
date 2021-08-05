@@ -13,7 +13,7 @@
             </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
-                <router-link :to="{name: 'ViewHodim',params: {id:item.id}}">
+                <router-link :to="{name: 'ViewHodim',params: {id:item.ism}}">
                   <v-icon @click="show(item.id)" color="success">mdi-eye</v-icon>
                 </router-link>
                 <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
@@ -146,26 +146,26 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.ishboshsanasi" solo placeholder="Ish boshlagan sanasi"
+                <v-text-field class="br" v-model="ishboshsanasi" solo placeholder="Ish boshlagan sanasi"
                   type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.ishtugsanasi" solo placeholder="Ishni tugatgan sanasi"
+                <v-text-field class="br" v-model="ishtugsanasi" solo placeholder="Ishni tugatgan sanasi"
                   type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
-                <v-select class="br" :items="lavozimi" label="Lavozimi" v-model="hodim.lavozimi" solo></v-select>
+                <v-select class="br" :items="lavozimi" label="Lavozimi" v-model="lavozimii" solo></v-select>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="hodim.ishmanzil" solo placeholder="Ishlagan shifoxona manzili">
+                <v-text-field class="br" v-model="ishmanzil" solo placeholder="Ishlagan shifoxona manzili">
                 </v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-textarea class="br" solo name="input-7-4" label="Qo’shimcha ma’lumotlar" v-model="hodim.qoshimcha">
+                <v-textarea class="br" solo name="input-7-4" label="Qo’shimcha ma’lumotlar" v-model="qoshimcha">
                 </v-textarea>
               </v-col>
             </v-row>
-            <div class="dialogcount" style="font-size: 20px">+</div>
+            <button class="dialogcount" style="font-size: 20px" @click="addWork()">+</button>
           </v-container>
         </v-card-text>
         <div class="btns">
@@ -197,15 +197,24 @@
       hodim: {
         hafta:[],
         img: "avatar2",
-        bigImg: "view2"
+        bigImg: "view2",
+        ishboshsanasi: [],
+        ishtugsanasi: [],
+        lavozimi: [],
+        ishmanzil: [],
+        qoshimcha: []
       },
+      ishboshsanasi: '',
+      ishtugsanasi: '',
+      lavozimii: '',
+      ishmanzil: '',
+      qoshimcha: '',
       headers: [
         {text: 'Ism',  value: 'shahsi'},
         {text: 'Email',  value: 'email'},
         {text: 'Qabul vaqti',  value: 'grafik'},
         {text: 'Mutaxassisligi',  value: 'mutahassis'},
         {text: 'Bo’lim',  value: 'faoliyat'},
-        // {text: 'Qabul kunlari',  value: 'hafta'},
         {text: '',  value: 'btns'},
       ],
       hududitem: ['Andijon', 'Farg`ona', 'Namangan', 'Toshkent', 'Samarqand', 'Buxoro', 'Navoiy', 'Xorazm',
@@ -219,6 +228,18 @@
       haftakuni: ['Dushanba', 'seshanba', 'chorshanba', 'payshanba','juma','shanba','yakshanba'],
     }),
     methods: {
+      addWork(){
+        this.hodim.ishboshsanasi.push(this.ishboshsanasi)
+        this.hodim.ishtugsanasi.push(this.ishtugsanasi)
+        this.hodim.lavozimi.push(this.lavozimii)
+        this.hodim.ishmanzil.push(this.ishmanzil)
+        this.hodim.qoshimcha.push(this.qoshimcha)
+        this.ishboshsanasi =  ''
+        this.ishtugsanasi =  ''
+        this.lavozimii =  ''
+        this.ishmanzil =  ''
+        this.qoshimcha =  ''
+      },
       show(id){
         this.$store.getters.showHodim(id)
       },

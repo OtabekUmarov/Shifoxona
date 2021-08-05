@@ -1,7 +1,6 @@
 <template>
   <div>
     <v-app>
-      
       <v-content style="padding: 10px; background: #F6F8FB;">
           <div class="add">
             <button>

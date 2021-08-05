@@ -21,15 +21,30 @@
         "chorshanba"
       ],
       "ishsanasi": "2021-05-12",
-      "ishboshsanasi": "2021-05-07",
-      "ishtugsanasi": "2021-05-12",
-      "lavozimi": "Yordamchi shifokor",
-      "ishmanzil": "Toshkent",
-      "id": 1,
-      "qoshimcha": "Bosh shifokor"
+      "ishboshsanasi": [
+        "2000-10-10",
+        "2005-05-05"
+      ],
+      "ishtugsanasi": [
+        "2004-10-10",
+        "2015-05-05"
+      ],
+      "lavozimi": [
+        "Yordamchi shifokor",
+        "Bosh shifokor"
+      ],
+      "ishmanzil": [
+        "Toshkent poliklinika",
+        "Toshkent viloyat shifoxonasi"
+      ],
+      "qoshimcha": [
+        "Yordamchi shifokor 4 yil",
+        "Toshkent viloyat shifoxonasi bosh shifokori"
+      ],
+      "id": 1
     },
     {
-      "ism": "Ismoilov Abror",
+      "ism": "Ismoilov Abrorbek",
       "yili": "1995-02-02",
       "hudud": "Farg`ona",
       "img": "avatar2",
@@ -49,12 +64,32 @@
         "chorshanba"
       ],
       "ishsanasi": "2021-05-12",
-      "ishboshsanasi": "2021-05-07",
-      "ishtugsanasi": "2021-05-11",
-      "lavozimi": "Yordamchi shifokor",
-      "ishmanzil": "Toshkent",
-      "id": 2,
-      "qoshimcha": "Quloq shifokori"
+      "ishboshsanasi": [
+        "2000-10-10",
+        "2005-05-05",
+        "2010-10-10"
+      ],
+      "ishtugsanasi": [
+        "2004-10-10",
+        "2015-05-05",
+        "2012-10-10"
+      ],
+      "lavozimi": [
+        "Yordamchi shifokor",
+        "Bosh shifokor",
+        "Bosh shifokor"
+      ],
+      "ishmanzil": [
+        "Toshkent poliklinika",
+        "Toshkent viloyat shifoxonasi",
+        "Toshkent Poliklinikasa"
+      ],
+      "qoshimcha": [
+        "Yordamchi shifokor 4 yil",
+        "Toshkent viloyat shifoxonasi bosh shifokori",
+        "2 yil davomida bosh shifokor"
+      ],
+      "id": 2
     },
     {
       "ism": "Aliyeva Anora",
@@ -79,12 +114,27 @@
         "Dushanba"
       ],
       "ishsanasi": "2021-05-12",
-      "ishboshsanasi": "2021-05-07",
-      "ishtugsanasi": "2021-05-11",
-      "lavozimi": "Yordamchi shifokor",
-      "ishmanzil": "Toshkent",
-      "id": 3,
-      "qoshimcha": "Hamshira"
+      "ishboshsanasi": [
+        "2000-10-10",
+        "2005-05-05"
+      ],
+      "ishtugsanasi": [
+        "2004-10-10",
+        "2015-05-05"
+      ],
+      "lavozimi": [
+        "Yordamchi shifokor",
+        "Bosh shifokor"
+      ],
+      "ishmanzil": [
+        "Toshkent poliklinika",
+        "Toshkent viloyat shifoxonasi"
+      ],
+      "qoshimcha": [
+        "Yordamchi shifokor 4 yil",
+        "Toshkent viloyat shifoxonasi bosh shifokori"
+      ],
+      "id": 3
     },
     {
       "hafta": [
@@ -107,11 +157,26 @@
       "faoliyat": "Jarrohlik",
       "staj": "12 yil",
       "grafik": "09:00-11:00",
-      "ishboshsanasi": "2020-03-26",
-      "ishtugsanasi": "2021-03-26",
-      "lavozimi": "Bosh shifokor",
-      "ishmanzil": "Buxoro shahar bosh shifoxonasi",
-      "qoshimcha": "Bosh Shifokor",
+      "ishboshsanasi": [
+        "2000-10-10",
+        "2005-05-05"
+      ],
+      "ishtugsanasi": [
+        "2004-10-10",
+        "2015-05-05"
+      ],
+      "lavozimi": [
+        "Yordamchi shifokor",
+        "Bosh shifokor"
+      ],
+      "ishmanzil": [
+        "Toshkent poliklinika",
+        "Toshkent viloyat shifoxonasi"
+      ],
+      "qoshimcha": [
+        "Yordamchi shifokor 4 yil",
+        "Toshkent viloyat shifoxonasi bosh shifokori"
+      ],
       "ishsanasi": "2019-02-25"
     },
     {
@@ -135,17 +200,60 @@
       "staj": "5",
       "grafik": "08:00-13:00",
       "ishsanasi": "2019-04-20",
-      "ishboshsanasi": "2016-08-15",
-      "ishtugsanasi": "2018-03-15",
-      "lavozimi": "Yordamchi shifokor",
-      "ishmanzil": "Toshkent",
-      "qoshimcha": "asasa",
+      "ishboshsanasi": [
+        "2000-10-10",
+        "2005-05-05"
+      ],
+      "ishtugsanasi": [
+        "2004-10-10",
+        "2015-05-05"
+      ],
+      "lavozimi": [
+        "Yordamchi shifokor",
+        "Bosh shifokor"
+      ],
+      "ishmanzil": [
+        "Toshkent poliklinika",
+        "Toshkent viloyat shifoxonasi"
+      ],
+      "qoshimcha": [
+        "Yordamchi shifokor 4 yil",
+        "Toshkent viloyat shifoxonasi bosh shifokori"
+      ],
       "id": 6
+    },
+    {
+      "hafta": [
+        "Dushanba",
+        "seshanba"
+      ],
+      "img": "avatar2",
+      "bigImg": "view2",
+      "ishboshsanasi": [],
+      "ishtugsanasi": [],
+      "lavozimi": [],
+      "ishmanzil": [],
+      "qoshimcha": [],
+      "email": "umarovotabek0220@gmail.com",
+      "ism": "Umarov Otabek",
+      "yili": "1999-02-20",
+      "hudud": "Namangan",
+      "manzil": "Yangiqorgon",
+      "oila": "Uylanmagan",
+      "malumoti": "Oliy ma`lumotli",
+      "raqam": "998998266113",
+      "uyraqam": "998991234567",
+      "mutahassis": "Jarroh",
+      "faoliyat": "Jarrohlik",
+      "staj": "0",
+      "grafik": "09:00-11:00",
+      "ishsanasi": "2018-05-20",
+      "id": 7
     }
   ],
   "bemor": [
     {
-      "ism": "Kamolova Aziza",
+      "ism": "Kamolova Azizaxon",
       "id": 1,
       "img": "avatar1",
       "bigImg": "view1",
@@ -173,12 +281,32 @@
       "davolangan": "Nevrologiya",
       "masulshifokor": "Ozodov Navro’z",
       "vazni": "55",
-      "boyi": "179",
-      "davolanishsana": "2021-03-12",
-      "kasallik": "Nevrologik",
-      "oldinshifokor": "Tohirov B",
-      "shifoxonamanzil": "Buxoro shahr",
-      "diagnoz": "Kuchli nevrologik bosim tufayli (ayol kishi tomonidan)"
+      "boyi": "180",
+      "davolanishsana": [
+        "1999-10-20",
+        "2005-02-10",
+        "2015-05-20"
+      ],
+      "kasallik": [
+        "Nevrologik",
+        "Insult",
+        "Nevrologik"
+      ],
+      "oldinshifokor": [
+        "Abdulla Ahmedov",
+        "Alijon Azamov",
+        "Abdullayev"
+      ],
+      "shifoxonamanzil": [
+        "Toshkent shahar",
+        "Toshkent Chirchiq",
+        "Toshkent"
+      ],
+      "diagnoz": [
+        "Nerv asab tizimi shikastlanishi",
+        "Insult 1 daraja",
+        "Nerv hujayralari shikastlanishi"
+      ]
     },
     {
       "ism": "Alijon Azamov",
@@ -210,11 +338,26 @@
       "masulshifokor": "Farxodov Alisher",
       "vazni": "75",
       "boyi": "180",
-      "davolanishsana": "2021-06-02",
-      "kasallik": "Nevrologik",
-      "oldinshifokor": "Aliyev",
-      "shifoxonamanzil": "Farg'ona",
-      "diagnoz": "Nevrologik"
+      "davolanishsana": [
+        "1999-10-20",
+        "2005-02-10"
+      ],
+      "kasallik": [
+        "Nevrologik",
+        "Insult"
+      ],
+      "oldinshifokor": [
+        "Abdulla Ahmedov",
+        "Alijon Azamov"
+      ],
+      "shifoxonamanzil": [
+        "Toshkent shahar",
+        "Toshkent Chirchiq"
+      ],
+      "diagnoz": [
+        "Nerv asab tizimi shikastlanishi",
+        "Insult 1 daraja"
+      ]
     },
     {
       "email": "abdullayev.olimjon@gmail.com",
@@ -246,11 +389,26 @@
       "masulshifokor": "Ozodov Navro’z",
       "vazni": "87",
       "boyi": "185",
-      "davolanishsana": "2021-05-05",
-      "kasallik": "Nevrologik",
-      "oldinshifokor": "Navroz",
-      "shifoxonamanzil": "Toshent",
-      "diagnoz": "Umurtqa sinishi"
+      "davolanishsana": [
+        "1999-10-20",
+        "2005-02-10"
+      ],
+      "kasallik": [
+        "Nevrologik",
+        "Insult"
+      ],
+      "oldinshifokor": [
+        "Abdulla Ahmedov",
+        "Alijon Azamov"
+      ],
+      "shifoxonamanzil": [
+        "Toshkent shahar",
+        "Toshkent Chirchiq"
+      ],
+      "diagnoz": [
+        "Nerv asab tizimi shikastlanishi",
+        "Insult 1 daraja"
+      ]
     },
     {
       "img": "avatar1",
@@ -281,10 +439,31 @@
       "masulshifokor": "Alisher Mahmudov",
       "vazni": "65",
       "boyi": "166",
-      "davolanishsana": "2019-03-23",
-      "kasallik": "Nevrologik",
-      "oldinshifokor": "Abdulla",
-      "shifoxonamanzil": "Toshkent",
+      "davolanishsana": [
+        "1999-10-20",
+        "2005-02-10",
+        "2009-05-05"
+      ],
+      "kasallik": [
+        "Nevrologik",
+        "Insult",
+        "Insult"
+      ],
+      "oldinshifokor": [
+        "Abdulla Ahmedov",
+        "Alijon Azamov",
+        "Ahroror"
+      ],
+      "shifoxonamanzil": [
+        "Toshkent shahar",
+        "Toshkent Chirchiq",
+        "Toshkent"
+      ],
+      "diagnoz": [
+        "Nerv asab tizimi shikastlanishi",
+        "Insult 1 daraja",
+        "Insult ogir"
+      ],
       "id": 4
     }
   ]

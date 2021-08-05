@@ -13,7 +13,7 @@
             </template>
             <template v-slot:item.btns="{ item }">
               <div class="text-right">
-                <router-link :to="{name: 'ViewBemor',params: {id:item.id}}">
+                <router-link :to="{name: 'ViewBemor',params: {id:item.ism}}">
                   <v-icon @click="show(item.id)" color="success">mdi-eye</v-icon>
                 </router-link>
                 <v-icon @click="edit(item)" class="ml-2">mdi-pencil</v-icon>
@@ -199,25 +199,25 @@
           <v-container>
             <v-row>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.davolanishsana" solo placeholder="Davolanish  sanasi"
+                <v-text-field class="br" v-model="davolanishsana" solo placeholder="Davolanish  sanasi"
                   type="text" onfocus="(this.type='date')"></v-text-field>
               </v-col>
               <v-col class="d-flex br" cols="12" sm="6">
-                <v-select class="br" :items="kasallik" label="Kasallik turi" v-model="bemor.kasallik" solo></v-select>
+                <v-select class="br" :items="kasallik" label="Kasallik turi" v-model="kasallikk" solo></v-select>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.oldinshifokor" solo placeholder="Shifokor ism-sharifi">
+                <v-text-field class="br" v-model="oldinshifokor" solo placeholder="Shifokor ism-sharifi">
                 </v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
-                <v-text-field class="br" v-model="bemor.shifoxonamanzil" solo
+                <v-text-field class="br" v-model="shifoxonamanzil" solo
                   placeholder="Davolangan shifoxona manzili"></v-text-field>
               </v-col>
               <v-col cols="12">
-                <v-textarea class="br" solo name="input-7-4" label="Diagnoz" v-model="bemor.diagnoz"></v-textarea>
+                <v-textarea class="br" solo name="input-7-4" label="Diagnoz" v-model="diagnoz"></v-textarea>
               </v-col>
             </v-row>
-            <div class="dialogcount" style="font-size: 20px">+</div>
+            <button class="dialogcount" style="font-size: 20px" @click="addInfo()">+</button>
           </v-container>
         </v-card-text>
         <div class="btns">
@@ -250,8 +250,18 @@
       isShow: false,
       bemor: {
         img: "avatar1",
-        bigImg: "view1"
+        bigImg: "view1",
+        davolanishsana:[],
+        kasallik:[],
+        oldinshifokor:[],
+        shifoxonamanzil:[],
+        diagnoz:[],
       },
+      davolanishsana: '',
+      kasallikk: '',
+      oldinshifokor: '',
+      shifoxonamanzil: '',
+      diagnoz: '',
       headers: [{text: 'Ism', value: 'shahsi'},
         {text: 'Email', value: 'email'},
         {text: 'Qabul sanasi', value: 'tashrifsana'},
@@ -274,13 +284,25 @@
       kasallik: ['Nevrologik', 'Insult']
     }),
     methods: {
+      addInfo(){
+        this.bemor.davolanishsana.push(this.davolanishsana)
+        this.bemor.kasallik.push(this.kasallikk)
+        this.bemor.oldinshifokor.push(this.oldinshifokor)
+        this.bemor.shifoxonamanzil.push(this.shifoxonamanzil)
+        this.bemor.diagnoz.push(this.diagnoz)
+        this.davolanishsana= ''
+        this.kasallikk= ''
+        this.oldinshifokor= ''
+        this.shifoxonamanzil= ''
+        this.diagnoz= ''
+      },
       show(id){
         this.$store.getters.showBemor(id)
       },
       add() {
         this.$store.dispatch('bemorlar', this.bemor)
         this.bemor = {
-           img: "avatar1",
+          img: "avatar1",
           bigImg: "view1"
         }
       },
@@ -315,6 +337,11 @@
           img: "avatar1",
           bigImg: "view1"
         }
+        this.davolanishsana= ''
+        this.kasallikk= ''
+        this.oldinshifokor= ''
+        this.shifoxonamanzil= ''
+        this.diagnoz= ''
       }
     },
     computed: {
